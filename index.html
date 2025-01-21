@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter to 연지 </title>
     <style>
+        /* 전체 body 스타일 */
         body {
             margin: 0;
             overflow: hidden;
@@ -16,12 +17,13 @@
             position: relative;
         }
 
+        /* 글씨 내용 스타일 */
         #letter {
             font-family: 'Arial', sans-serif;
-            font-size: 20px;
+            font-size: 30px; /* 글씨 크기를 30px로 설정 */
             color: white; /* 글씨 색을 흰색으로 */
             text-align: center; /* 글씨를 수평으로 가운데 정렬 */
-            letter-spacing: 1mm; /* 자간을 1mm로 설정 */
+            letter-spacing: 0.1em; /* 자간을 1mm로 설정 (자간을 em으로 조정) */
             position: relative;
             z-index: 1;
             font-weight: bold;
@@ -35,16 +37,18 @@
             padding: 20px; /* 여백을 추가하여 글씨가 화면 가장자리에 붙지 않도록 설정 */
         }
 
+        /* 별 스타일 */
         .star {
             position: absolute; /* 별을 화면 어디에든 배치할 수 있도록 설정 */
             background: #fafaf7;
-            width: 15px;
-            height: 15px;
+            width: 15px; /* 별 크기를 고정 (15px) */
+            height: 15px; /* 별 크기를 고정 (15px) */
             border-radius: 50%;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            animation: twinkle 30s infinite;
+            animation: twinkle 36.5s infinite; /* 별 애니메이션 속도를 4초 늦춤 */
         }
 
+        /* 별 반짝이는 애니메이션 */
         @keyframes twinkle {
             0%, 100% {
                 transform: translateY(0);
@@ -56,6 +60,7 @@
             }
         }
 
+        /* 배경 이미지 컨테이너 */
         .image-container {
             position: absolute;
             top: 50%;
@@ -64,8 +69,9 @@
         }
 
         .image-container img {
-            max-width: 100%;
+            width: 100%; /* 화면 크기에 맞춰 이미지를 반응형으로 설정 */
             height: auto;
+            max-width: none; /* 최대 너비 제한 없앰 */
         }
     </style>
 </head>
@@ -86,7 +92,7 @@
     <!-- Generate stars using JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const numberOfStars = 100; // 별의 개수를 늘려서 전체 화면을 꽉 채우도록 설정
+            const numberOfStars = 200; // 별의 개수를 늘려서 전체 화면을 꽉 채우도록 설정
 
             for (let i = 0; i < numberOfStars; i++) {
                 createStar();
@@ -95,8 +101,8 @@
             function createStar() {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.left = `${Math.random() * window.innerWidth}px`; // 화면의 너비에 맞게 랜덤 배치
-                star.style.top = `${Math.random() * window.innerHeight}px`; // 화면의 높이에 맞게 랜덤 배치
+                star.style.left = `${Math.random() * 100}vw`; // 화면의 너비에 맞게 랜덤 배치 (vw 단위)
+                star.style.top = `${Math.random() * 100}vh`; // 화면의 높이에 맞게 랜덤 배치 (vh 단위)
                 star.style.animationDuration = `${Math.random() * 2 + 1}s`; // 애니메이션 속도도 랜덤으로 설정
 
                 document.body.appendChild(star); // 별을 body에 추가
