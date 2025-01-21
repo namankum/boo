@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter to 연지 </title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black; /* 배경색을 검정으로 설정 */
+            position: relative;
+        }
+
+        #letter {
+            font-family: 'Arial', sans-serif;
+            font-size: 20px;
+            color: white; /* 글씨 색을 흰색으로 */
+            text-align: center; /* 글씨를 수평으로 가운데 정렬 */
+            letter-spacing: 1mm; /* 자간을 1mm로 설정 */
+            position: relative;
+            z-index: 1;
+            font-weight: bold;
+
+            /* Flexbox로 글씨를 수직, 수평 모두 중앙에 배치 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* 텍스트가 세로로 쌓이게 설정 */
+            text-align: center;
+            padding: 20px; /* 여백을 추가하여 글씨가 화면 가장자리에 붙지 않도록 설정 */
+        }
+
+        .star {
+            position: absolute; /* 별을 화면 어디에든 배치할 수 있도록 설정 */
+            background: #fafaf7;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 30s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(500px);
+                opacity: 0;
+            }
+        }
+
+        .image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="https://raw.githubusercontent.com/namankum/boo/5001d480d7e0f29dba313bf3241e1721255c6b0a/boo.jpg" alt="Background Image">
+    </div>
+
+    <div id="letter">
+        <MARQUEE hspace="100" vspace="100" direction="up" scrollamount="2">
+            <br> ❤️사랑하는 연지야 <br>생일 너무 축하한다<br>
+            아들맘이 된 너가 너무 기특하고 이쁘다<br>
+            너 힘들때는 언제든 내가 있을테니 <br>걱정말고 살거라<br>난 언제나 너편이다.<br> 사랑한다.<br>
+            - 박그린 올림<br>&nbsp;
+        </MARQUEE>
+    </div>
+
+    <!-- Generate stars using JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const numberOfStars = 100; // 별의 개수를 늘려서 전체 화면을 꽉 채우도록 설정
+
+            for (let i = 0; i < numberOfStars; i++) {
+                createStar();
+            }
+
+            function createStar() {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * window.innerWidth}px`; // 화면의 너비에 맞게 랜덤 배치
+                star.style.top = `${Math.random() * window.innerHeight}px`; // 화면의 높이에 맞게 랜덤 배치
+                star.style.animationDuration = `${Math.random() * 2 + 1}s`; // 애니메이션 속도도 랜덤으로 설정
+
+                document.body.appendChild(star); // 별을 body에 추가
+            }
+        });
+    </script>
+</body>
+</html>
