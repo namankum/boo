@@ -45,7 +45,7 @@
             height: 15px; /* 별 크기를 고정 (15px) */
             border-radius: 50%;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            animation: twinkle 36.5s infinite; /* 별 애니메이션 속도를 4초 늦춤 */
+            animation: twinkle 55.10s infinite; /* 별 애니메이션 속도를 4초 늦춤 */
         }
 
         /* 별 반짝이는 애니메이션 */
@@ -66,12 +66,19 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 100%; /* 화면 너비에 맞추기 */
+            height: 100%; /* 화면 높이에 맞추기 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .image-container img {
-            width: 100%; /* 화면 크기에 맞춰 이미지를 반응형으로 설정 */
-            height: auto;
-            max-width: none; /* 최대 너비 제한 없앰 */
+            max-width: 100%; /* 너비를 화면에 맞게 설정 */
+            max-height: 100%; /* 높이를 화면에 맞게 설정 */
+            min-width: 300px; /* 최소 너비 설정 (너무 작게 보이지 않도록) */
+            min-height: 200px; /* 최소 높이 설정 (너무 작게 보이지 않도록) */
+            object-fit: contain; /* 이미지 비율 유지하면서 꽉 차도록 설정 */
         }
     </style>
 </head>
